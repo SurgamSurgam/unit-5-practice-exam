@@ -16,8 +16,6 @@ for (let i = 0; i < allGenres.length; i++) {
 
 genres = genres.join(", ");
 
-// console.log(genres)
-
 // MOVIES
 let movies = [];
 
@@ -45,8 +43,6 @@ for (let i = 0; i < 50; i++) {
 
 ratings = ratings.join(", ");
 
-// console.log(ratings)
-
 // COMMENTS
 let comments = [];
 
@@ -58,8 +54,6 @@ for (let i = 0; i < 50; i++) {
 }
 
 comments = comments.join(", ");
-
-// console.log(comments);
 
 // INSERTING INTO DATABASE
 const populateData = async () => {
@@ -74,17 +68,3 @@ const populateData = async () => {
 };
 
 populateData();
-
-//
-// const populateData = async () => {
-//   try {
-//     await db.none('INSERT INTO genres(name) VALUES ' + genres);
-//     await db.none('INSERT INTO movies(title, genre_id, img_url) VALUES ${movies};',{movies});
-//     await db.none('INSERT INTO ratings(stars, movie_id) VALUES ${ratings};', {ratings});
-//     await db.none('INSERT INTO comments(body, movie_id) VALUES ${comments};', {comments});
-//   } catch (error) {
-//     console.error("Error from ASYNC/AWAIT:", error);
-//   }
-// };
-//
-// populateData();
