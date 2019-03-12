@@ -6,7 +6,7 @@ CREATE DATABASE movies_final;
 
 CREATE TABLE genres (
   id SERIAL PRIMARY KEY,
-  name VARCHAR NOT NULL
+  name VARCHAR(360) NOT NULL
 );
 
 CREATE TABLE movies (
@@ -24,6 +24,6 @@ CREATE TABLE ratings (
 
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
-  body TEXT NOT NULL,
+  body TEXT,
   movie_id INT REFERENCES movies(id) ON DELETE CASCADE
 );
