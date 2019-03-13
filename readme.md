@@ -1,5 +1,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/SurgamSurgam/unit-5-practice-exam/badge.svg?branch=master)](https://coveralls.io/github/SurgamSurgam/unit-5-practice-exam?branch=master)
 
+[![Build Status](https://travis-ci.org/SurgamSurgam/unit-5-practice-exam.svg?branch=master)](https://travis-ci.org/SurgamSurgam/unit-5-practice-exam)
+
 # Final Exam Practice Assessment
 
 ## Opening Remarks
