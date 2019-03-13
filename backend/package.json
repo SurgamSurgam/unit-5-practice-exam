@@ -32,7 +32,7 @@
       "html"
     ],
     "collectCoverageFrom": [
-      "**/*.{js,jsx}",
+      "validate.js",
       "!**/node_modules/**",
       "!**/vendor/**",
       "!**/__fixtures__/**",
