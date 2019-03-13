@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "10.11.0"
+  - node
 install:
   - npm install
 before_script:
@@ -8,3 +8,5 @@ before_script:
 script:
   - npm run write-coveralls
   - npm test
+notifications:
+  email: false
