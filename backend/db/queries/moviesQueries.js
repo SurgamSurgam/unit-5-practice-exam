@@ -1,4 +1,5 @@
 const db = require('../index.js');
+const {validate}  = require('../../validate.js');
 
 const getAllMoviesWithAvgRating = (req, res, next) => {
   db.any('SELECT title, ROUND(AVG(stars),1) AS rating_average FROM movies FULL JOIN ratings ON ratings.movie_id = movies.id GROUP BY movies.title')
@@ -28,6 +29,17 @@ const getSingleMovieAllInfo = (req, res, next) => {
   })
 }
 const allMoviesForGenre = (req, res, next) => {
+  if (!validate(req.params, Object.keys(req.params)[0] , typeof req.params.genre_name)) {
+
+          res.status(400)
+          res.send({
+              "msg": "some required values are missing",
+          })
+          // res.status(400).json({
+          //     msg: "some required values are missing",
+          // })
+      }
+
   let query = req.params.genre_name[0].toUpperCase().concat(req.params.genre_name.slice(1))
   console.log('PARAMS',query);
   db.any('SELECT movies.id, title, name, ROUND(AVG(ratings.stars),1) AS average_rating, body, img_url  FROM movies LEFT OUTER JOIN ratings ON ratings.movie_id = movies.id LEFT OUTER JOIN genres ON genres.id = movies.genre_id LEFT OUTER JOIN comments ON comments.movie_id=movies.id WHERE genres.name=$1 GROUP BY movies.id, ratings.id, genres.id, comments.id', [query])
