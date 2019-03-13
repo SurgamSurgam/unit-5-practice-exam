@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "start": "supervisor ./bin/www",
-    "test": "$(npm bin)/jest --coverage -t entry && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "test": "$(npm bin)/jest --coverage -t entry && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "write-coveralls": "rm -rf .coveralls.yml && echo \"repo_token:$COVERAGE_TOKEN\" >> .coveralls.yml"
-
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -20,11 +19,18 @@
     "pg-promise": "^8.6.3"
   },
   "devDependencies": {
+    "coveralls": "^3.0.3",
     "jest": "^24.5.0"
   },
   "jest": {
     "collectCoverage": true,
-    "coverageReporters": ["json", "lcov", "text", "clover", "html"],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover",
+      "html"
+    ],
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
