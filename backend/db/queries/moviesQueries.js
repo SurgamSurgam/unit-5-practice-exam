@@ -19,7 +19,7 @@ const getSingleMovieAllInfo = (req, res, next) => {
   .then((movie)=> {
     res.status(200).json({
       status: 'succes',
-      message: 'Got all information and comments for a specific movie.',
+      message: 'Got all information and comments for a specific movie',
       body: movie
     })
   })
@@ -27,5 +27,20 @@ const getSingleMovieAllInfo = (req, res, next) => {
     next(error);
   })
 }
+const allMoviesForGenre = (req, res, next) => {
+  let query = req.params.genre_name[0].toUpperCase().concat(req.params.genre_name.slice(1))
+  console.log('PARAMS',query);
+  db.any('SELECT movies.id, title, name, ROUND(AVG(ratings.stars),1) AS average_rating, body, img_url  FROM movies LEFT OUTER JOIN ratings ON ratings.movie_id = movies.id LEFT OUTER JOIN genres ON genres.id = movies.genre_id LEFT OUTER JOIN comments ON comments.movie_id=movies.id WHERE genres.name=$1 GROUP BY movies.id, ratings.id, genres.id, comments.id', [query])
+  .then((movies)=> {
+    res.status(200).json({
+      status: 'succes',
+      message: 'Got all the movies that have a certain genre',
+      body: movies
+    })
+  })
+  .catch(error => {
+    next(error);
+  })
+}
 
-module.exports = { getAllMoviesWithAvgRating, getSingleMovieAllInfo };
+module.exports = { getAllMoviesWithAvgRating, getSingleMovieAllInfo, allMoviesForGenre };
