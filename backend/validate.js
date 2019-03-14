@@ -2,6 +2,10 @@ const validate = (obj, propertyName, propertyType) => {
   return typeof obj[propertyName] === propertyType
 }
 
-// console.log(validate({genre_name: 'a'}, 'genre_name', 'string'));
+const allowable = (obj, propertyName, propertyType) => {
+  return typeof obj[propertyName] !== propertyType
+}
 
-module.exports = { validate }
+// console.log(allowable({genre_name: 1}, 'genre_name', 'number'));
+
+module.exports = { validate, allowable }
