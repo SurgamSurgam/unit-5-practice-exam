@@ -11,6 +11,7 @@ test('entry returns true', () => {
 // I want the testing of this case to return false - the logic of what's being validated is true however should I not set the toBe to be what I want the result to look like?
 // Same goes for the last test
 test('returns false if object value is not available', () => {
+  console.log(validate({a: undefined}, 'a', 'undefined'))
   expect(validate({a: undefined}, 'a', 'undefined')).toBe(false)
 })
 

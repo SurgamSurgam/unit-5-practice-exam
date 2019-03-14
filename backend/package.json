@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "supervisor ./bin/www",
-    "test": "$(npm bin)/jest --coverage -t entry && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "$(npm bin)/jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "write-coveralls": "rm -rf .coveralls.yml && echo \"repo_token:$COVERAGE_TOKEN\" >> .coveralls.yml"
   },
   "dependencies": {
