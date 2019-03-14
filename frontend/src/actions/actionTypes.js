@@ -1,0 +1,2 @@
+//Movies
+export const RECEIVE_ALL_MOVIES = "RECEIVE_ALL_MOVIES";

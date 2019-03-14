@@ -1,0 +1,22 @@
+{
+  "name": "unit-5-practice-exam",
+  "version": "1.0.0",
+  "description": "[![Coverage Status](https://coveralls.io/repos/github/SurgamSurgam/unit-5-practice-exam/badge.svg?branch=master)](https://coveralls.io/github/SurgamSurgam/unit-5-practice-exam?branch=master) [![Build Status](https://travis-ci.org/SurgamSurgam/unit-5-practice-exam.svg?branch=master)](https://travis-ci.org/SurgamSurgam/unit-5-practice-exam)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently --kill-others \"cd frontend && npm start\" \"cd backend && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SurgamSurgam/unit-5-practice-exam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SurgamSurgam/unit-5-practice-exam/issues"
+  },
+  "homepage": "https://github.com/SurgamSurgam/unit-5-practice-exam#readme",
+  "dependencies": {}
+}
