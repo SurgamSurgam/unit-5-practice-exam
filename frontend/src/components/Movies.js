@@ -1,7 +1,13 @@
 import React from "react";
 
 class Movies extends React.Component {
-  state = { searchQuery: "", submittedSearch: false, searchedResults: [] };
+  constructor() {
+    super();
+    this.state = {
+      searchQuery: "",
+      searchedResults: ""
+    };
+  }
 
   componentDidMount() {
     this.props.getAllMovies();
@@ -15,6 +21,32 @@ class Movies extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    let that = this;
+    let filteredMovies = this.props.movies.filter(movie => {
+      return movie.title
+        .toLowerCase()
+        .includes(that.state.searchQuery.toLowerCase());
+    });
+    debugger;
+    let filteredMoviesMapped = filteredMovies.map((movie, i) => {
+      return (
+        <div className="filteredMoviesMappedDiv" key={i}>
+          <h1>Title: {movie.title}</h1>
+          <h3>
+            Rating:{" "}
+            {movie.rating_average
+              ? movie.rating_average
+              : "No rating available"}
+          </h3>
+          <img src={movie.img_url} alt="" />
+        </div>
+      );
+    });
+    this.setState({
+      searchedResults: filteredMoviesMapped,
+      submittedSearch: true,
+      searchQuery: ""
+    });
   };
 
   render() {
@@ -44,7 +76,7 @@ class Movies extends React.Component {
           />
           <button type="submit">Search By Title</button>
         </form>
-        {moviesMapped}
+        {this.state.submittedSearch ? this.state.searchedResults : moviesMapped}
       </div>
     );
   }
